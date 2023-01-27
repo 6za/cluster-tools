@@ -27,4 +27,6 @@ jobs:
           push: true
           tags: |
             ${{ secrets.DOCKER_USER }}/cluster-tools:latest
-            ${{ secrets.DOCKER_USER }}/cluster-tools:${GITHUB_SHA:7}
+            ${{ secrets.DOCKER_USER }}/cluster-tools:${{env.TAG}}
+          build-args: |
+            TAG=${{GITHUB_SHA:7}}
