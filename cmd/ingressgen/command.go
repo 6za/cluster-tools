@@ -12,6 +12,7 @@ var (
 	apps       string
 	repo       string
 	path       string
+	ip         string
 	appList    []string
 )
 
@@ -32,6 +33,7 @@ func NewCommand() *cobra.Command {
 	ingressGenCmd.Flags().StringVar(&apps, "apps", "minio,minio-console,vault,atlantis,chartmuseum,argo,kubefirst,argocd", "comma separated list fo apps names to be used on the generation")
 	ingressGenCmd.Flags().StringVar(&repo, "repo", "", "gitops repo address")
 	ingressGenCmd.Flags().StringVar(&path, "path", "registry", "path at the repository for the application to be installed")
+	ingressGenCmd.Flags().StringVar(&ip, "ip", "127.0.0.1", "LAN IP of the local installation machine")
 
 	return ingressGenCmd
 }

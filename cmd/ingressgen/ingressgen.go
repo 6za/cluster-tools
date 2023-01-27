@@ -11,6 +11,7 @@ import (
 
 func executeIngressGen(cmd *cobra.Command, args []string) error {
 	ingressgen.GenerateArtifacts(hostDomain, appList, repo, path)
+	ingressgen.GenerateHostsLine(hostDomain, appList, ip)
 	return nil
 }
 
@@ -33,6 +34,20 @@ func validateIngressGen(cmd *cobra.Command, args []string) error {
 		log.Error().Msgf("Missing flag repo:  %s ", repo)
 		hasError = true
 
+	}
+	if repo == "" {
+		log.Error().Msgf("Missing flag repo:  %s ", repo)
+		hasError = true
+
+	}
+	if !strings.HasPrefix(repo, "https://") {
+		log.Error().Msgf("Not supported repo:  %s ", repo)
+		hasError = true
+	}
+
+	if !strings.HasSuffix(repo, ".git") {
+		log.Error().Msgf("Not supported repo:  %s ", repo)
+		hasError = true
 	}
 
 	if hasError {
