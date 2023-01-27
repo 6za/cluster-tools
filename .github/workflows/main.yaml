@@ -25,4 +25,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: us6zarer/cluster-tools:latest
+          tags: 6zar/cluster-tools:latest
