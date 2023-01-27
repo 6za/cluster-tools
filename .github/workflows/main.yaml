@@ -25,6 +25,6 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ secrets.DOCKER_USER }}/cluster-tools:${GITHUB_SHA:7}
+          tags: ${{ secrets.DOCKER_USER }}/cluster-tools:latest
           
             
