@@ -60,6 +60,8 @@ func GenerateArtifacts(hostSuffix string, apps []string, repo string, path strin
 	//Generate ingress files
 	componentsFolder := "components/ingress-alt"
 	filepath := directory + "/" + componentsFolder
+	_ = os.RemoveAll(filepath)
+
 	err = os.Mkdir(filepath, 0755)
 	if err != nil {
 		log.Error().Err(err).Msgf("error: %s", err)

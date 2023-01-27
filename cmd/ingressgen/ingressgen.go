@@ -2,6 +2,7 @@ package ingressgen
 
 import (
 	"fmt"
+	"os"
 	"strings"
 
 	"github.com/6za/cluster-tools/internal/controller/ingressgen"
@@ -49,7 +50,12 @@ func validateIngressGen(cmd *cobra.Command, args []string) error {
 		log.Error().Msgf("Not supported repo:  %s ", repo)
 		hasError = true
 	}
+	token := os.Getenv("GITHUB_AUTH_TOKEN")
+	if token == "" {
+		log.Error().Msgf("Missing env variable GITHUB_AUTH_TOKEN.")
+		hasError = true
 
+	}
 	if hasError {
 		return fmt.Errorf("missing flags")
 	}

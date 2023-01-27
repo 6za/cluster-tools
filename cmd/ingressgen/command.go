@@ -29,7 +29,7 @@ func NewCommand() *cobra.Command {
 		// PostRunE: runPostAction,
 	}
 
-	ingressGenCmd.Flags().StringVar(&hostDomain, "host-domain", "", "the suffix name to be used on etc hosts")
+	ingressGenCmd.Flags().StringVar(&hostDomain, "host-domain", "", "the suffix name to be used on etc hosts, for example: mylocal.cloud.internal")
 	ingressGenCmd.Flags().StringVar(&apps, "apps", "minio,minio-console,vault,atlantis,chartmuseum,argo,kubefirst,argocd", "comma separated list fo apps names to be used on the generation")
 	ingressGenCmd.Flags().StringVar(&repo, "repo", "", "gitops repo address")
 	ingressGenCmd.Flags().StringVar(&path, "path", "registry", "path at the repository for the application to be installed")
