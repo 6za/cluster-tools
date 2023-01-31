@@ -15,8 +15,8 @@ Tested for release: 1.11
 
 | Flag           | Description                                                                          |
 |:---------------|:-------------------------------------------------------------------------------------|
-| :--host-domain | A domain to be used on your nodes /etc/hosts file to identify your k8s cluster host. |
-| :--repo        | Where your gitops repo is defined, only supported HTTPS at the moment.               |
-| :-ip           | The kubernetes cluster host IP on your LAN(internal network)                         |
+| --host-domain | A domain to be used on your nodes /etc/hosts file to identify your k8s cluster host. |
+| --repo        | Where your gitops repo is defined, only supported HTTPS at the moment.               |
+| --ip           | The kubernetes cluster host IP on your LAN(internal network)                         |
 
 
