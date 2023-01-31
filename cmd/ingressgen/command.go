@@ -23,7 +23,7 @@ func NewCommand() *cobra.Command {
 	ingressGenCmd := &cobra.Command{
 		Use:     "ingress-gen",
 		Short:   "generate ingress routes",
-		Long:    "TBD",
+		Long:    "",
 		PreRunE: validateIngressGen,
 		RunE:    executeIngressGen,
 		// PostRunE: runPostAction,
