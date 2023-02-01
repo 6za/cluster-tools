@@ -22,7 +22,7 @@ spec:
           - --owner 
           - $(GITHUB_OWNER)
           - --repo
-          - http://github.com/$(GITHUB_OWNER)/gitops.git
+          - gitops
         image: {{ .Values.image }}
         env:
         - name: GITHUB_AUTH_TOKEN

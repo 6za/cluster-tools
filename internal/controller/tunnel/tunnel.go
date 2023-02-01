@@ -52,7 +52,7 @@ func ExecuteTunnel(owner, repo string) error {
 		ngrokConfig, err := ngrokConfigMapClient.Get(context.TODO(), "ngrok-agent-config", metaV1.GetOptions{})
 		if err != nil {
 			//How to check if it is not found
-			log.Warn().Err(err).Msgf("error getting ngrok-agent-config")
+			log.Warn().Msgf("error getting ngrok-agent-config")
 		} else {
 			lastTunnel = string(ngrokConfig.Data["LAST_TUNNEL"])
 		}
@@ -86,8 +86,8 @@ func ExecuteTunnel(owner, repo string) error {
 		hookEvents := []string{"issue_comment", "pull_request", "pull_request_review", "push"}
 		err = gitHubClient.UpdateWebhook(owner, repo, hookName, hookURL, lastTunnel, hookSecret, hookEvents)
 		if err != nil {
-			log.Error().Msgf("error when updating a webhook: %v", err)
-			return fmt.Errorf("error when updating a webhook: %v", err)
+			log.Error().Err(err).Msgf("error when updating a webhook: %v", err)
+			//return fmt.Errorf("error when updating a webhook: %v", err)
 		}
 		lastTunnel = hookURL
 		m := make(map[string]string)
