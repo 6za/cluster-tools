@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"github.com/6za/cluster-tools/cmd/ingressgen"
+	"github.com/6za/cluster-tools/cmd/tunnel"
 	"github.com/spf13/cobra"
 )
 
@@ -40,6 +41,6 @@ func init() {
 	// when this action is called directly.
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 	rootCmd.AddCommand(ingressgen.NewCommand())
-	// rootCmd.AddCommand(tunnel.NewCommand())
+	rootCmd.AddCommand(tunnel.NewCommand())
 
 }
