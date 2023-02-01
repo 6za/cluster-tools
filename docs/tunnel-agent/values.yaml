@@ -5,6 +5,6 @@
 
 
 #
-image: 6za/cluster-tools:latest
+image: 6zar/cluster-tools:latest
 owner: owner
 repo: repo

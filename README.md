@@ -41,11 +41,11 @@ spec:
   project: default
   source:
     repoURL: 'https://6za.github.io/cluster-tools'
-    targetRevision: 0.5.0
+    targetRevision: 0.7.0
     chart: tunnel-agent
   destination:
     server: 'https://kubernetes.default.svc'
-    namespace: watcher-system
+    namespace: ngrok-agent
   syncPolicy:
       automated:
         prune: true

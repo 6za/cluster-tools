@@ -3,7 +3,17 @@ entries:
   tunnel-agent:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-02-01T17:09:05.556857882Z"
+    created: "2023-02-01T17:15:50.079904472Z"
+    description: A Helm chart for Kubernetes
+    digest: 36c604cad9b1aa0609103e0bc0bb36920a63e324b58e5e4f103e9a3fc565fa0d
+    name: tunnel-agent
+    type: application
+    urls:
+    - https://6za.github.io/cluster-tools/tunnel-agent-0.7.0.tgz
+    version: 0.7.0
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-02-01T17:15:50.075635764Z"
     description: A Helm chart for Kubernetes
     digest: 47a2a75f13a815a343991936820b789a91c72911473b481ad86785ea12fffa09
     name: tunnel-agent
@@ -13,7 +23,7 @@ entries:
     version: 0.6.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-02-01T17:09:05.551301465Z"
+    created: "2023-02-01T17:15:50.07255543Z"
     description: A Helm chart for Kubernetes
     digest: eafa88c13bb82fd3d997daaca30fd9d5775840121a11e9a228a13ec6c69cd26a
     name: tunnel-agent
@@ -23,7 +33,7 @@ entries:
     version: 0.5.0
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2023-02-01T17:09:05.54811934Z"
+    created: "2023-02-01T17:15:50.070195597Z"
     description: A Helm chart for Kubernetes
     digest: 5021a3f0a812ee1cee62892fb52ee07f53af1d39d0171b97818a8a2b7939c6c9
     name: tunnel-agent
@@ -31,4 +41,4 @@ entries:
     urls:
     - https://6za.github.io/cluster-tools/tunnel-agent-0.4.0.tgz
     version: 0.4.0
-generated: "2023-02-01T17:09:05.545690882Z"
+generated: "2023-02-01T17:15:50.06622368Z"
