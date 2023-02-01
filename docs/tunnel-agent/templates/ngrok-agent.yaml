@@ -93,9 +93,8 @@ spec:
       serviceAccount: ngrok-agent-sa
       containers:
       - command:
-        - /usr/local/bin/kubefirst
-        - tool 
-        - webhook-checker 
+        - /home/developer/app/cluster-tools
+        - tunnel-check 
         - --owner 
         - ${GITHUB_OWNER}
         - --repo 
