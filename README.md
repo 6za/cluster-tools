@@ -41,7 +41,7 @@ spec:
   project: default
   source:
     repoURL: 'https://6za.github.io/cluster-tools'
-    targetRevision: 0.7.0
+    targetRevision: 0.10.0
     chart: tunnel-agent
   destination:
     server: 'https://kubernetes.default.svc'
@@ -58,4 +58,6 @@ spec:
           duration: 5s
           maxDuration: 5m0s
           factor: 2
+
+
 ```
