@@ -1,0 +1,57 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngrok-checker
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"  
+spec:
+  selector:
+    matchLabels:
+      app: ngrok-checker
+  template:
+    metadata:
+      labels:
+        app: ngrok-checker
+    spec:
+      serviceAccount: ngrok-agent-sa
+      containers:
+      command: ["/home/developer/app/cluster-tools"]
+      args:        
+        - tunnel-check 
+        - --owner 
+        - "$(GITHUB_OWNER)"
+        - --repo 
+        - "http://github.com/$(GITHUB_OWNER)/gitops.git"
+        image: {{ .Values.image }}
+        env:
+        - name: GITHUB_AUTH_TOKEN
+          valueFrom:
+            secretKeyRef:
+              name: ngrok-secrets
+              key: PERSONAL_ACCESS_TOKEN
+              optional: false 
+        - name: GITHUB_OWNER
+          valueFrom:
+            secretKeyRef:
+              name: ngrok-secrets
+              key: USERNAME
+              optional: false 
+        name: ngrok-checker
+---
+apiVersion: external-secrets.io/v1beta1
+kind: ExternalSecret
+metadata:
+  name: ngrok-secrets
+  annotations:
+    argocd.argoproj.io/sync-wave: "0"
+spec:
+  target:
+    name: ngrok-secrets
+  secretStoreRef:
+    kind: ClusterSecretStore
+    name: vault-secrets-backend
+  refreshInterval: 10s
+  dataFrom:
+    - extract:      
+        key: /ci-secrets
