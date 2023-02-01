@@ -1,0 +1,46 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ngrok-agent
+  namespace: ngrok-agent
+spec:
+  selector:
+    matchLabels:
+      app: ngrok-agent
+  template:
+    metadata:
+      labels:
+        app: ngrok-agent
+    spec:
+      containers:
+      - args:
+        - http
+        - atlantis.atlantis.svc.cluster.local:80
+
+        image: docker.io/ngrok/ngrok:3
+        name: ngrok-agent
+        ports:
+        - containerPort: 4040
+          name: web
+        readinessProbe:
+          httpGet:
+            path: /status
+            port: 4040
+            scheme: HTTP
+          initialDelaySeconds: 10
+          periodSeconds: 20
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ngrok-agent
+  namespace: ngrok-agent
+spec:
+  ports:
+  - name: web
+    port: 4040
+    targetPort: 4040
+  selector:
+    app: ngrok-agent
+    
