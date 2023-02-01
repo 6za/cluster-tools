@@ -79,6 +79,8 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: ngrok-checker
+  annotations:
+    argocd.argoproj.io/sync-wave: "10"  
 spec:
   selector:
     matchLabels:
@@ -102,17 +104,16 @@ spec:
         env:
         - name: GITHUB_AUTH_TOKEN
           valueFrom:
-          secretKeyRef:
-            name: ngrok-secrets
-            key: PERSONAL_ACCESS_TOKEN
-            optional: false 
+            secretKeyRef:
+              name: ngrok-secrets
+              key: PERSONAL_ACCESS_TOKEN
+              optional: false 
         - name: GITHUB_OWNER
           valueFrom:
-          secretKeyRef:
-            name: ngrok-secrets
-            key: USERNAME
-            optional: false 
-
+            secretKeyRef:
+              name: ngrok-secrets
+              key: USERNAME
+              optional: false 
         name: ngrok-checker
 ---
 apiVersion: external-secrets.io/v1beta1

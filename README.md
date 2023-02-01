@@ -25,3 +25,37 @@ Tested for release: 1.11
 | --ip          | The kubernetes cluster host IP on your LAN(internal network)                         |
 
 
+
+# Ngrok-AGENT
+
+
+```yaml 
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ngrok-agent
+  namespace: argocd
+  annotations:    
+    argocd.argoproj.io/sync-wave: "0"
+spec: 
+  project: default
+  source:
+    repoURL: 'https://6za.github.io/cluster-tools'
+    targetRevision: 0.5.0
+    chart: tunnel-agent
+  destination:
+    server: 'https://kubernetes.default.svc'
+    namespace: watcher-system
+  syncPolicy:
+      automated:
+        prune: true
+        selfHeal: true
+      syncOptions:
+        - CreateNamespace=true
+      retry:
+        limit: 5
+        backoff:
+          duration: 5s
+          maxDuration: 5m0s
+          factor: 2
+```
