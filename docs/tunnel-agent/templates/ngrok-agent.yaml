@@ -10,7 +10,7 @@ metadata:
   name: ngrok-agent-cr
 rules:
   - apiGroups: [""]
-    resources: ["secrets","configmap"]
+    resources: ["secrets","configmaps"]
     verbs: ["get", "list", "watch"]
 --- 
 apiVersion: rbac.authorization.k8s.io/v1
