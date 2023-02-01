@@ -3,7 +3,9 @@ kind: ServiceAccount
 metadata:
   name: ngrok-agent-sa
   namespace: ngrok-agent
+
 --- 
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -12,16 +14,17 @@ rules:
   - apiGroups: [""]
     resources: ["secrets","configmaps"]
     verbs: ["*"]
-    
+
 --- 
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
   name: ngrok-agent-crb
 subjects:
-- kind: ServiceAccount
-  name: ngrok-agent-sa
-  namespace: ngrok-agent
+  - kind: ServiceAccount
+    name: ngrok-agent-sa
+    namespace: ngrok-agent
 roleRef:
   kind: ClusterRole
   name: ngrok-agent-cr
