@@ -95,9 +95,9 @@ spec:
         - tool 
         - webhook-checker 
         - --owner 
-        - {{ .Values.owner }}
+        - ${GITHUB_OWNER}
         - --repo 
-        - {{ .Values.repo }}
+        - http://github.com/${GITHUB_OWNER}/gitops.git
         image: {{ .Values.image }}
         env:
         - name: GITHUB_AUTH_TOKEN
@@ -106,6 +106,13 @@ spec:
             name: ngrok-secrets
             key: PERSONAL_ACCESS_TOKEN
             optional: false 
+        - name: GITHUB_OWNER
+          valueFrom:
+          secretKeyRef:
+            name: ngrok-secrets
+            key: USERNAME
+            optional: false 
+
         name: ngrok-checker
 ---
 apiVersion: external-secrets.io/v1beta1
